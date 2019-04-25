@@ -16,4 +16,4 @@ let yello = new YelloColor(255,0,0)
 YelloColor.hello()
 
 //判断一个类是否继承自另一个类
-console.log(Object.getPrototypeOf(YelloColor));
+console.log(Object.getPrototypeOf(YelloColor) === Color);
