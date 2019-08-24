@@ -24,3 +24,37 @@ function call(key,args){
 console.log(call('map',i=>{
   return i + 1
 })([1,2,3]));
+
+const collectInto = fn => (...args)=> fn(args)
+
+const collectInto2 = function(fn){
+  return function(...args){
+    fn(args)
+  }
+}
+
+const Pall = collectInto(Promise.all.bind(Promise))
+let p1 = Promise.resolve(1)
+let p2 = Promise.resolve(2)
+let p3 = new Promise(resolve => {
+  console.log(resolve)
+  return setTimeout(resolve,2000,3)
+})
+Pall(p1,p2,p3).then(console.log)
+
+
+
+function flip(fn){
+  return function(first,...args){
+    return fn(...args,first)
+  }
+}
+let a = { name: 'John Smith' };
+let b = {};
+const mergeFrom = flip(Object.assign);
+let mergePerson = mergeFrom.bind(null, a);
+mergePerson(b); // == b
+console.log(b,'11');
+b = {};
+Object.assign(b, a); // == b
+console.log(b);
