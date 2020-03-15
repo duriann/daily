@@ -4,5 +4,5 @@ function splat(fn) {
 	}
 }
 
-let add = splat((a,b)=>a+b)
+let add = splat((a,b) => a + b)
 console.log(add([1,2]))
