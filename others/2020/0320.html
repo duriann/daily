@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>requestAnimationFrame</title>
+</head>
+<style lang="css">
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .circle{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: skyblue;
+    position: relative;
+  }
+  
+</style>
+<body>
+  <div class="circle"></div>
+</body>
+</html>
+<script>
+  
+
+  let circleEle = document.querySelector('.circle')
+  animation(200)
+  function animation(){
+    let offsetLeft = circleEle.offsetLeft
+    let step = Math.ceil(200 - offsetLeft)/20
+    if(offsetLeft<200){
+      circleEle.style.left =  offsetLeft+step + 'px'
+      window.requestAnimationFrame(animation)
+    }
+  }
+</script>
