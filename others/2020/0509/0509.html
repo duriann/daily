@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片点击放大 可拖拽顺序 放大可涂鸦保存</title>
+  </head>
+  <script
+    src="https://code.jquery.com/jquery-2.2.4.js"
+    integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+    crossorigin="anonymous"
+  ></script>
+  <body>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      ul{
+        list-style: none;
+        display: flex;
+      }
+      ul img{
+        width: 150px;
+        height: 200px;
+      }
+      .preview{
+        height: 400px;
+        width: 300px;
+        border: 1px solid #ccc;
+      }
+      .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .preview img{
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    
+    <div class="container">
+      <ul>
+        <li><img draggable="true" src="./imgs/1.jpg" alt="1"></li>
+        <li><img draggable="true" src="./imgs/2.jpg" alt="2"></li>
+        <li><img draggable="true" src="./imgs/3.jpg" alt="3"></li>
+        <li><img draggable="true" src="./imgs/4.jpg" alt="4"></li>
+      </ul>
+      <div class="preview"></div>
+    </div>
+  </body>
+  <script>
+    $('img').click(function(e){
+      console.log(e,this)
+      $('.preview').html($.clone(this))
+    })
+  </script>
+
+</html>
