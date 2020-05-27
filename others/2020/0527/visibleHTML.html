@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试visibility事件</title>
+</head>
+<body>
+  hello
+</body>
+</html>
+<script>
+  console.log('hah')
+  document.addEventListener('visibilitychange',function(e){
+    console.log('不见了',e)
+    console.log(document.visibilityState)
+    if(document.visibilityState === 'hidden'){
+      document.title = '快回来~~'
+    }else{
+      document.title = '测试visibility事件'
+    }
+  })
+
+  
+</script>

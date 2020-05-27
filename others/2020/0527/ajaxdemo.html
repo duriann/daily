@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="getData()">点我点我</button>
+</body>
+</html>
+<script>
+  function getData(){
+    //1 创建xhr对象
+    var xhr = new XMLHttpRequest()
+    //2 创建请求
+    xhr.open('get','http://www.baidu.com')
+    //3 监听变化
+    xhr.onreadystatechange = (function(state){
+      console.log('state',state)
+    })
+    //4 发送请求
+    xhr.send()
+  }
+</script>
