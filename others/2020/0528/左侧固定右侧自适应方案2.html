@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左侧固定 右侧自适应方案</title>
+</head>
+<style>
+  html,body,.content{
+    height: 100%;
+  }
+  .left{
+    width: 100px;
+    height: 100px;
+    float: left;
+    background: cornflowerblue;
+  }
+  .right{
+    height: 100%;
+    background: chartreuse;
+    margin-left: 100px;
+  }
+
+</style>
+<body>
+  <div class="content">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>
