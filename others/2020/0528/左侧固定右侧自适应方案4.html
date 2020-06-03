@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左侧固定 右侧自适应方案</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  html,body,.content{
+    height: 100%;
+  }
+  .left{
+    height: 100%;
+    width: 100px;
+    float: left;
+    background: cornflowerblue;
+  }
+  .right{
+    float: right;
+    width: calc(100% - 100px);
+    height: 100%;
+    background: chartreuse;
+  }
+  /*
+  * flex: 1 等同于 flex-grow:1 flex-shrink:1 flex-basis: 0%
+  */
+</style>
+<body>
+  <div class="content">
+    <div class="left"></div>
+    <div class="right"></div>
+  </div>
+</body>
+</html>
