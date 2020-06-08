@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.10.1",
+    "@babel/plugin-proposal-decorators": "^7.10.1",
     "add": "^2.0.6",
     "html-webpack-plugin": "^4.3.0",
     "yarn": "^1.22.4"
