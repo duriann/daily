@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isDev = process.env.NODE_ENV === "development";
@@ -8,7 +7,7 @@ const isDev = process.env.NODE_ENV === "development";
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "bundle.js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "..", "dist"),
   },
   resolve:{
@@ -62,7 +61,7 @@ module.exports = {
       filename: "index.html",
       template: "template.html",
     }),
-    new CleanWebpackPlugin(),
+    
     new CopyWebpackPlugin({
       patterns: [
         { from: path.resolve(__dirname, "..", "assets"), to: "assets" },
