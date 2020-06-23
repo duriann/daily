@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const isDev = process.env.NODE_ENV === "development";
+const EndWebpackPlugin = require('../plugins/EndWebpackPlugin')
 
 module.exports = {
   entry: "./src/index.js",
@@ -68,6 +69,10 @@ module.exports = {
         { from: path.resolve(__dirname, "..", "assets"), to: "assets" },
       ],
     }),
-    
+    new EndWebpackPlugin((stats)=>{
+      console.log('成功啦',stats);
+    },err=>{
+      console.log('err',err);
+    })
   ],
 };

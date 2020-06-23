@@ -39,4 +39,4 @@
 // import 'regenerator-runtime/runtime'
 // import "core-js/stable";
 // import "regenerator-runtime/runtime";
-// console.log('[1,2,3].includes(1)',[1,2,3].includes(1));
+console.log('[1,2,3].includes(1)',[1,2,3].includes(1));
