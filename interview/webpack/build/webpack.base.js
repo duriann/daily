@@ -69,7 +69,7 @@ module.exports = {
       ],
     }),
     new EndWebpackPlugin((stats)=>{
-      console.log('成功啦',stats);
+      console.log('成功啦');
     },err=>{
       console.log('err',err);
     })

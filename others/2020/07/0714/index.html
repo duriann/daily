@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  div{
+    height: 10000px;
+    background: linear-gradient(red,blue)
+  }
+</style>
+<body>
+  <div></div>
+</body>
+<script src="./index.js"></script>
+<script>
+  let count = 0
+  window.addEventListener('scroll',debounce(function(e){
+    console.log('e',e,count++)
+  },1000))
+</script>  
+</html>
