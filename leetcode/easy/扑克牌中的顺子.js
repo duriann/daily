@@ -18,7 +18,8 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 var isStraight = function(nums) {
-  nums = nums.sort()
+  nums = nums.sort((a,b)=>a-b)
+  console.log('nums',nums)
   var flag = true
   var zeros = 0
   var fflag = true
@@ -30,12 +31,12 @@ var isStraight = function(nums) {
         //   continue
       }
       var dis = nums[i+1] - (nums[i]+1) 
-      console.log('dis',dis)
-      if(dis>3){
+      console.log('dis',dis,i,nums[i+1], (nums[i]+1))
+      if((nums[i] !== 0 && dis>3) ||   (nums[i] !== 0 &&  dis==-1)){
           fflag = false
       }
       
-      if(dis>=1 && dis <=3){
+      if(dis>=1 && dis <=3 && nums[i]!==0){
           d+=dis
       }
   }
@@ -45,4 +46,5 @@ var isStraight = function(nums) {
   console.log('d',d,'zero',zeros)
   return zeros>=d
 };
-console.log(isStraight([1,2,6,0,0]))
+
+console.log(isStraight([0,6,10,11,12]))
