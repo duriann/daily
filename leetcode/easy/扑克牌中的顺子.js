@@ -48,3 +48,25 @@ var isStraight = function(nums) {
 };
 
 console.log(isStraight([0,6,10,11,12]))
+
+
+
+var runningSum = function(nums) {
+  console.log(nums);
+  
+  for(var i = 0 ; i< nums.length ; i++){
+    console.log(i,nums[i]);
+    nums[i] = i===0 ? nums[i] :  nums[i] +=  nums[i-1]
+      // if(i === 0){
+
+      //   nums[i] ==  nums[i]
+      // }else{
+      //   nums[i] +=  nums[i-1]
+      // }
+      // console.log('1',nums);
+      
+  }
+  return nums
+};
+let arr = [1,2,3,4]
+console.log(runningSum(arr));
