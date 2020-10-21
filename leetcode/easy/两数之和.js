@@ -26,16 +26,16 @@ var twoSum = function(nums, target) {
     let flag = false
     for (let i = 0; i < nums.length; i++) {
       const num = nums[i];
-      if(num===target){
-        return [i]
-      }
-      if(num>target){
-        continue
-      }
+      // if(num===target){
+      //   return [i]
+      // }
+      // if(num>target){
+      //   continue
+      // }
       if(flag){
         break
       }
-      for (let j = 1; j < nums.length; j++) {
+      for (let j = i+1; j < nums.length; j++) {
         console.log('i,j',i,j);
         const num2 = nums[j];
         if(num+num2 === target){
@@ -48,5 +48,5 @@ var twoSum = function(nums, target) {
 
 }
 
-console.log(twoSum([2,5,5,11],
-  10));
+console.log(twoSum([-1,-2,-3,-4,-5],
+  -8));
