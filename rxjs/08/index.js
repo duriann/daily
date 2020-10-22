@@ -3,11 +3,11 @@ const {take,takeUntil, concatAll} = require('rxjs/operators')
 let source = interval(1000)
 //take
 let take3 = source.pipe(take(3))
-take3.subscribe(
-  value=>console.log(value),
-  err=>console.log(err),
-  ()=>console.log('complete')
-)
+// take3.subscribe(
+//   value=>console.log(value),
+//   err=>console.log(err),
+//   ()=>console.log('complete')
+// )
 
 //takeUntil
 console.log('分割线==========================================================');
