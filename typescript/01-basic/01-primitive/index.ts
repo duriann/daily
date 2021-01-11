@@ -1,8 +1,6 @@
-let name: string = '123'
-let age: number = 12
-let isAdult: boolean
+let name: string = '123';
+let age: number = 12;
+let isAdult: boolean;
 
-console.log(isAdult)
-export {
-    name
-}
+console.log(name);
+export { name };
