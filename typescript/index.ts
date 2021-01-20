@@ -109,7 +109,7 @@ identity2('a')
 identity2({ length: 1, name: 'identity2' })
 //Using Type Parameters in Generic Constraints
 // 当我们想要获取一个对象上的属性的时候 希望obj[key] 的这个key可以限定在obj的keys里
-function getProperty<T, K extends keyof T>(obj: T, key: K) {
+function getProperty<T, K extends keyof T>(obj: T, key: K):T[K] {
   return obj[key]
 }
 let person = {
