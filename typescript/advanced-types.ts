@@ -82,10 +82,26 @@ type T5 = NotNullable<string | number | undefined>
 type FunctionPropertyNames<T> = {
   [K in keyof T]: T[K] extends Function ? K : never
 }[keyof T]
-interface Part {
+type Part  = {
   id: number
   name: string
   subparts: Part[]
   updatePart(newName: string): void
 }
 type P1 = FunctionPropertyNames<Part>
+type TestPick<T, P extends keyof T> = {
+  [K in P]: T[K]
+}
+type TT = TestPick<Part, 'id' | 'name'>
+type FunctionProperties<T> = TestPick<Part,FunctionPropertyNames<Part>>
+type NoneFunctionPropertyNames<T> = {
+  [K in keyof T]: T[K] extends Function ? never:K
+}[keyof T]
+type P3 = NoneFunctionPropertyNames<Part>
+type T4 = TestPick<Part, NoneFunctionPropertyNames<Part>>
+
+// 如果T能赋值给(param: infer P) => any 则 返回P 否则返回T
+type ParamType<T> = T extends (param: infer P) => any ? P : T
+type TestParamType = ParamType<(name: string) => void> //string
+type TestParamType2 = ParamType<(name: 'xiaobai' | 'boluo') => void> // xiaobai | boluo
+type TestParamType3 = ParamType<number> //number
