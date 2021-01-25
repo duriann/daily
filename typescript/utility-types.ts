@@ -78,5 +78,23 @@ type FakeReturnType<T extends (...arg: any)=> any > = T extends (...arg:any)=>in
 type TestFakeReturnType = FakeReturnType<typeof f1>
 type TestFakeReturnType2 = FakeReturnType<()=>string>
 type TestFakeReturnType3 = FakeReturnType<<T>()=>T>
-// type TestFakeReturnType4 = FakeReturnType<string> 类型“string”不满足约束“(...arg: any) => any”。ts(2344)
 
+//InstanceType<Type>
+//Constructs a type consisting of the instance type of a constructor function in Type
+type FakeInstanceType<T extends new (...args: any)=>any> = T extends new (...args: any)=> infer R?R:never
+class C {
+  y = 0;
+  x = 0
+}
+type TestFakeInstanceType = FakeInstanceType<typeof C>
+
+//Required<Type>
+//Constructs a type consisting of all properties of Type set to required. the opposite of Partial
+type FakeRequired<T> = {
+  [K in keyof T]-?: T[K]
+}
+interface Props{
+  name?: string
+  age?:number
+}
+type TestFakeRequired = FakeRequired<Props>
