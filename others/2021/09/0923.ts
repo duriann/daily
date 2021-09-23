@@ -29,3 +29,22 @@ type SomeOptional2 = SetOptional<Foo, 'a' | 'b'>
 // 	b?: string; // 保持不变
 // 	c: boolean;
 // }
+
+//2定义一个 ConditionalPick 工具类型，支持根据指定的 Condition 条件来生成新的类型
+interface Example {
+  a: string
+  b: string | number
+  c: () => void
+  d: {}
+  f: string | number | boolean
+}
+/**
+ * 
+  测试用例：
+  type StringKeysOnly = ConditionalPick<Example, string>;
+  {a: string}
+**/
+type ConditionalPick<T, Q> = {
+  [k in keyof T as T[k] extends Q ? k : never]: T[k]
+}
+type StringKeysOnly = ConditionalPick<Example, string | number | {}>
