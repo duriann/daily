@@ -2,29 +2,27 @@
 //接口的另一个用途，对类的一部分行为进行抽象。
 
 interface Alarm {
-    alert(): void
+  alert(): void
 }
 
-class Door {
+class Door {}
 
+class safeDoor extends Door implements Alarm {
+  alert(): void {
+    console.log('warn!!')
+  }
 }
 
-class safeDoor extends Door implements Alarm{
-    alert(): void {
-        console.log('warn!!')
-    }
-}
-
-class Car implements Alarm{
-    alert(): void {
-        console.log('didi!!')
-    }
+class Car implements Alarm {
+  alert(): void {
+    console.log('didi!!')
+  }
 }
 
 let d = new safeDoor()
 d.alert()
 
-interface LightableAlarm extends Alarm{
-    on()
-    off()
+interface LightableAlarm extends Alarm {
+  on()
+  off()
 }
