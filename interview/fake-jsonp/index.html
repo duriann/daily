@@ -1,47 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>模拟jsonp</title>
-</head>
-<body>
-  <button onclick='send(event,"菠萝")'>fake-jsonp</button>
-</body>
-<script>
-  function jsonp({url,params,key,callback}){
-    
-    var fnName = 'callback'+Date.now().toString()
-    window[fnName] = callback
-    var scriptEle = document.createElement('script')
-    scriptEle.src = url + parseParams(params) + `&${key}=${fnName}`
-    document.body.appendChild(scriptEle)
-  }
-  function parseParams(params){
-    var str = '?'
-    Object.keys(params).forEach(k=>{
-      str = str + k + '=' + params[k] + '&'
-    })
-    console.log('str',str)
-    return str.slice(0,str.length-1)
-  }
-</script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>模拟jsonp</title>
+  </head>
+  <body>
+    <button onclick='send(event,"菠萝")'>fake-jsonp</button>
+  </body>
+  <script>
+    function jsonp({ url, params, key, callback }) {
+      var fnName = 'callback' + Date.now().toString()
+      window[fnName] = callback
+      var scriptEle = document.createElement('script')
+      scriptEle.src = url + parseParams(params) + `&${key}=${fnName}`
+      document.body.appendChild(scriptEle)
+      setTimeout(() => {
+        document.body.removeChild(scriptEle)
+      }, 0)
+    }
+    function parseParams(params) {
+      var str = '?'
+      Object.keys(params).forEach((k) => {
+        str = str + k + '=' + params[k] + '&'
+      })
+      console.log('str', str)
+      return str.slice(0, str.length - 1)
+    }
+  </script>
 
-<script>
-  function send(e,name){
-    console.log('name',name)
-
-    jsonp({
-      url: "http://localhost:9999/hello",
-      params: {
-        name,
-        age: 1
-      },
-      key: 'callback',//与后端约定好的回调字段
-      callback: function(res){
-        console.log('res',res)
-      }
-    })
-  }
-</script>
+  <script>
+    function send(e, name) {
+      console.log('name', name)
+      jsonp({
+        url: 'http://localhost:9999/hello',
+        params: {
+          name,
+          age: 1,
+        },
+        key: 'callback', //与后端约定好的回调字段
+        callback: function (res) {
+          console.log('res', res)
+        },
+      })
+    }
+  </script>
 </html>
