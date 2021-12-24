@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+
+    "strictNullChecks": false, // 启⽤严格的 null 检查
+  }
+}
