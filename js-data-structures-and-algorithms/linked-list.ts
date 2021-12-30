@@ -1,17 +1,12 @@
-import { defaultEquals } from '../utils/index'
-import { Node } from '../models/link-list-modal'
+import { defaultEquals, IEqualsFunction } from './utils/index'
+import { Node } from './models/linked-list-models'
 
-export default class LinkedList {
-  private count: number
-  private head: Node | null
-  private equalsFn: typeof defaultEquals
-  constructor(equalsFn = defaultEquals) {
-    this.count = 0 // {2}
-    this.head = null // {3}
-    this.equalsFn = equalsFn // {4}
-  }
+export default class LinkedList<T> {
+  protected count: number = 0
+  protected head: Node<T> | null
+  constructor(protected equalsFn: IEqualsFunction<T> = defaultEquals) {}
 
-  push(element: any) {
+  push(element: T) {
     const node = new Node(element)
     if (this.head == null) {
       this.head = node
@@ -55,12 +50,12 @@ export default class LinkedList {
   }
 
   // 任意位置插入元素
-  insert(element: any, index: number) {
+  insert(element: T, index: number) {
     const node = new Node(element)
     if (index >= 0 && index <= this.count) {
       if (index == 0) {
         const head = this.head
-        this.head = element
+        this.head = node
         this.head.next = head
       } else {
         let prev = this.getElementAt(index - 1)
@@ -75,7 +70,7 @@ export default class LinkedList {
   }
 
   // 查找元素位置
-  indexOf(element: any) {
+  indexOf(element: T) {
     let current = this.head
     for (let i = 0; i < this.count && current != null; i++) {
       if (this.equalsFn(element, current.element)) {
@@ -87,7 +82,7 @@ export default class LinkedList {
   }
 
   // 移除元素
-  remove(element: any) {
+  remove(element: T) {
     const index = this.indexOf(element)
     return this.removeAt(index)
   }
@@ -115,7 +110,7 @@ export default class LinkedList {
   }
 }
 
-const list = new LinkedList()
+const list = new LinkedList<number>()
 list.push(15)
 list.push(10)
 list.push(12)
