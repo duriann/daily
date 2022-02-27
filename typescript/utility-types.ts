@@ -8,7 +8,6 @@ const nav: Record<Page, PageInfo> = {
   contact: { title: 'contact' },
   home: { title: 'home' },
 }
-
 type FakeRecord<T extends keyof any, P> = {
   [K in T]: P
 }
@@ -37,8 +36,7 @@ type Person2 = {
 }
 type Test<T> = {
   [k in keyof T as `get${Capitalize<k & string>}`]: () => T[k]
-} &
-  T
+} & T
 type test22 = Test<Person2>
 
 var c: test22 = {
@@ -85,9 +83,8 @@ type TestFakeParameters4 = FakeParameters<any>
 //Contructs a tuple or array type from the types of a constructor function type. It produces a tuple type with
 //all parameter types(or the type never if Type is not a function)
 type T0 = ConstructorParameters<ErrorConstructor>
-type FakeConstructorParameters<
-  T extends new (...arg: any) => any
-> = T extends new (...arg: infer P) => any ? P : never
+type FakeConstructorParameters<T extends new (...arg: any) => any> =
+  T extends new (...arg: infer P) => any ? P : never
 type TestFakeConstructorParameters = FakeConstructorParameters<ErrorConstructor>
 
 //ReturnType<Type>
